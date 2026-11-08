@@ -1,8 +1,9 @@
 import os
 
-from openai import OpenAI, OpenAIError
+import requests
 
-MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
+MODEL = os.getenv("TERMINAI_MODEL", "llama3.1")
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434").rstrip("/")
 SYSTEM_PROMPT = (
     "You are TerminAI, a friendly and practical assistant for conversation "
     "and coding help. Explain code clearly, ask clarifying questions when "
@@ -10,51 +11,63 @@ SYSTEM_PROMPT = (
 )
 
 
+def ask_ollama(history):
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}, *history]
+    try:
+        response = requests.post(
+            f"{OLLAMA_URL}/api/chat",
+            json={"model": MODEL, "messages": messages, "stream": False},
+            timeout=300,
+        )
+        response.raise_for_status()
+        data = response.json()
+        return data["message"]["content"].strip()
+    except requests.ConnectionError as exc:
+        raise RuntimeError(
+            f"Can't reach Ollama at {OLLAMA_URL}. Make sure Ollama is installed "
+            "and running."
+        ) from exc
+    except requests.Timeout as exc:
+        raise RuntimeError("Ollama took too long to respond; try again.") from exc
+    except requests.HTTPError as exc:
+        detail = exc.response.text if exc.response is not None else str(exc)
+        raise RuntimeError(f"Ollama request failed: {detail}") from exc
+    except (requests.RequestException, ValueError, KeyError) as exc:
+        raise RuntimeError(f"Couldn't read Ollama's response: {exc}") from exc
+
+
 def main():
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        print("Missing OPENAI_API_KEY.")
-        print("Set it in your environment, then run TerminAI again.")
-        return
-
-    client = OpenAI(api_key=api_key)
-    conversation = [{"role": "developer", "content": SYSTEM_PROMPT}]
-
-    print(f"TerminAI — chat and coding help ({MODEL})")
-    print("Type /clear to start a new conversation or /exit to quit.\n")
+    history = []
+    print(f"TerminAI — local Ollama chat ({MODEL})")
+    print("No API key needed. Type /clear to reset or /exit to quit.\n")
 
     while True:
         try:
-            message = input("You: ").strip()
+            text = input("You: ").strip()
         except (KeyboardInterrupt, EOFError):
             print("\nTerminAI: Goodbye!")
             break
 
-        if not message:
+        if not text:
             continue
-
-        if message.lower() in {"/exit", "/quit"}:
+        if text.lower() in {"/exit", "/quit"}:
             print("TerminAI: Goodbye!")
             break
-
-        if message.lower() == "/clear":
-            conversation = [{"role": "developer", "content": SYSTEM_PROMPT}]
+        if text.lower() == "/clear":
+            history.clear()
             print("TerminAI: Conversation cleared.\n")
             continue
 
-        conversation.append({"role": "user", "content": message})
-
+        history.append({"role": "user", "content": text})
         try:
-            response = client.responses.create(
-                model=MODEL,
-                input=conversation,
-            )
-            answer = response.output_text.strip()
-            print(f"\nTerminAI: {answer}\n")
-            conversation.append({"role": "assistant", "content": answer})
-        except OpenAIError as error:
-            conversation.pop()
-            print(f"\nTerminAI: The API request failed: {error}\n")
+            answer = ask_ollama(history)
+        except RuntimeError as exc:
+            history.pop()
+            print(f"\nTerminAI: {exc}\n")
+            continue
+
+        history.append({"role": "assistant", "content": answer})
+        print(f"\nTerminAI: {answer}\n")
 
 
 if __name__ == "__main__":
