@@ -1,2 +1,3 @@
+# Netlify serves this static, multi-page site from the repository root.
 [build]
   publish = "."
