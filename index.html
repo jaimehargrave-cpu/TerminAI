@@ -1,43 +1,211 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101114">
-  <meta name="description" content="TerminAI is a local AI coding companion for Mac, powered by Ollama. No cloud API key required.">
-  <title>TerminAI — Local AI for your Mac</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="#top"><span class="brand-mark">T</span> TerminAI</a>
-    <a class="nav-link" href="https://github.com/jaimehargrave-cpu/TerminAI">Project on GitHub ↗</a>
-  </header>
-  <main id="top">
-    <section class="hero">
-      <div>
-        <p class="eyebrow"><span class="pulse"></span> PRIVATE AI. RIGHT ON YOUR MAC.</p>
-        <h1>Your coding companion.<br><span>On your terms.</span></h1>
-        <p class="intro">Chat, explore ideas, and get coding help with an AI model running locally on your Mac. TerminAI connects to Ollama on your computer—no cloud AI API key required.</p>
-        <div class="actions"><a class="button primary" href="https://github.com/jaimehargrave-cpu/TerminAI">Explore TerminAI ↗</a><a class="button secondary" href="#getting-started">Get started</a></div>
-        <p class="fine-print">TerminAI is currently a Python terminal app; a standalone Mac app is not available yet.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TerminAI is a private local AI coding assistant for Mac. Built to run with Ollama on your computer—no cloud API key required."
+    />
+    <title>TerminAI — Local AI for Mac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="#top" class="brand" aria-label="TerminAI home">
+        <span class="brand-mark">T</span>
+        <span>TerminAI</span>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#why-mac">Why Mac</a>
+        <a href="#install">Install</a>
+        <a href="#security">Privacy</a>
+        <a class="nav-cta" href="https://github.com/jaimehargrave-cpu/TerminAI">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> Local AI for developers</p>
+          <h1>Run AI locally.<br />Build faster.</h1>
+          <p class="lead">
+            TerminAI brings a coding assistant to your Mac without sending your prompts to the cloud.
+            It works with Ollama, so your files, ideas, and code stay on your machine.
+          </p>
+
+          <div class="actions">
+            <a class="button primary" href="#install">Download for macOS</a>
+            <a class="button secondary" href="https://github.com/jaimehargrave-cpu/TerminAI">View GitHub</a>
+          </div>
+
+          <ul class="mini-stats" aria-label="Product stats">
+            <li><strong>Local-only</strong><span>Works with Ollama</span></li>
+            <li><strong>Private</strong><span>No cloud API required</span></li>
+            <li><strong>Fast</strong><span>Built for terminal workflows</span></li>
+          </ul>
+        </div>
+
+        <div class="app-window" aria-label="TerminAI app preview">
+          <div class="window-bar">
+            <div class="traffic-lights">
+              <span class="red"></span>
+              <span class="yellow"></span>
+              <span class="green"></span>
+            </div>
+            <div class="window-title">terminai</div>
+            <div class="window-badge">LOCAL</div>
+          </div>
+
+          <div class="app-screen">
+            <div class="chat-row user">
+              <span class="label">YOU</span>
+              <p>How do I reverse a list in Python?</p>
+            </div>
+            <div class="chat-row ai">
+              <span class="label">TERMINAI</span>
+              <p>
+                Use <code>my_list[::-1]</code> for a reversed copy or
+                <code>my_list.reverse()</code> for an in-place change.
+              </p>
+            </div>
+            <div class="chat-row prompt-line">
+              <span class="prompt-caret">›</span>
+              <div class="prompt-input"></div>
+            </div>
+            <div class="app-metrics">
+              <div>
+                <strong>32ms</strong>
+                <span>avg response</span>
+              </div>
+              <div>
+                <strong>0 API</strong>
+                <span>cloud calls</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trusted-strip">
+        <p>Built for developers who want AI on their own machine</p>
+      </section>
+
+      <section class="features" id="features">
+        <div class="section-heading">
+          <p class="eyebrow"><span class="dot"></span> Features</p>
+          <h2>Everything you expect from a coding assistant.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon">⌘</div>
+            <h3>Fast terminal workflows</h3>
+            <p>Stay in the flow. Ask questions, explain code, and iterate without leaving your shell.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">▣</div>
+            <h3>Private by default</h3>
+            <p>Runs with Ollama on your Mac. No cloud API key, no external processing required.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">✦</div>
+            <h3>Helpful explanations</h3>
+            <p>Get clear answers, confident debugging guidance, and better code understanding.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">◎</div>
+            <h3>Works with local models</h3>
+            <p>Choose the model that fits your hardware and your use case.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="why-mac" id="why-mac">
+        <div class="section-heading left">
+          <p class="eyebrow"><span class="dot"></span> Why Mac</p>
+          <h2>Made for the way developers work.</h2>
+        </div>
+
+        <div class="mac-grid">
+          <div class="glass-panel">
+            <h3>Built for speed</h3>
+            <p>Use a local AI a few keystrokes away from your terminal, editor, and scripts.</p>
+          </div>
+          <div class="glass-panel">
+            <h3>Built for focus</h3>
+            <p>Keep your data local and reduce friction between thinking, coding, and testing.</p>
+          </div>
+          <div class="glass-panel">
+            <h3>Built for control</h3>
+            <p>Choose the model you trust and run your AI workloads wherever you want.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="install" id="install">
+        <div class="install-copy">
+          <p class="eyebrow"><span class="dot"></span> Install</p>
+          <h2>Run it on your Mac in minutes.</h2>
+          <ol>
+            <li>Install Ollama from <a href="https://ollama.com">ollama.com</a></li>
+            <li>Pull a local model such as <code>llama3.1</code></li>
+            <li>Clone or download the TerminAI project and run it</li>
+          </ol>
+          <div class="code-block">
+            <span class="code-label">Terminal</span>
+            <pre>ollama pull llama3.1
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 terminai.py</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="security" id="security">
+        <div class="section-heading center">
+          <p class="eyebrow"><span class="dot"></span> Privacy</p>
+          <h2>Your machine, your model, your data.</h2>
+        </div>
+
+        <div class="privacy-row">
+          <div class="privacy-card">
+            <h3>No cloud API key</h3>
+            <p>TerminAI is designed to work with local models using Ollama, which means no cloud API key is required.</p>
+          </div>
+          <div class="privacy-card">
+            <h3>Local model support</h3>
+            <p>Your prompts and code stay on your machine while the model runs on your Mac.</p>
+          </div>
+          <div class="privacy-card">
+            <h3>Developer-friendly</h3>
+            <p>Built for coding workflows, debugging, and rapid iteration without extra friction.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-brand">
+        <a href="#top" class="brand" aria-label="TerminAI home">
+          <span class="brand-mark">T</span>
+          <span>TerminAI</span>
+        </a>
       </div>
-      <div class="terminal-card" aria-label="Example TerminAI conversation">
-        <div class="terminal-top"><div class="window-dots"><i></i><i></i><i></i></div><span>terminai — local session</span><span class="local-label">● LOCAL</span></div>
-        <div class="terminal-body"><p class="prompt"><span>you</span> How do I reverse a list in Python?</p><p class="reply"><span>terminai</span> Use <code>my_list[::-1]</code> to create a reversed copy, or <code>my_list.reverse()</code> to reverse it in place.</p><p class="cursor-line">› <span class="cursor"></span></p></div>
-      </div>
-    </section>
-    <section class="facts"><div><strong>Local-first</strong><span>Runs through Ollama on your Mac</span></div><div><strong>No API key</strong><span>Use a model downloaded to your computer</span></div><div><strong>Open source</strong><span>Explore the project on GitHub</span></div></section>
-    <section class="how" id="getting-started">
-      <p class="eyebrow">GET STARTED</p><h2>Three steps. No API key.</h2>
-      <div class="steps">
-        <article><span class="step-number">01</span><h3>Install Ollama</h3><p>Download Ollama for Mac and open it so its local service is running.</p><a href="https://ollama.com/download/mac">Download Ollama ↗</a></article>
-        <article><span class="step-number">02</span><h3>Get a model</h3><p>In Terminal, download a model—for example, <code>ollama pull llama3.1</code>.</p></article>
-        <article><span class="step-number">03</span><h3>Run TerminAI</h3><p>Download the project and follow the setup instructions in its README.</p><a href="https://github.com/jaimehargrave-cpu/TerminAI">Open project ↗</a></article>
-      </div>
-      <p class="status-note">Once the model is downloaded, TerminAI sends chat prompts to Ollama running locally on your Mac.</p>
-    </section>
-  </main>
-  <footer><a class="brand" href="#top"><span class="brand-mark">T</span> TerminAI</a><span>Local AI, under your control.</span><a href="https://github.com/jaimehargrave-cpu/TerminAI">GitHub ↗</a></footer>
-</body>
+      <p>Local AI for your Mac.</p>
+      <a href="https://github.com/jaimehargrave-cpu/TerminAI">GitHub ↗</a>
+    </footer>
+  </body>
 </html>
