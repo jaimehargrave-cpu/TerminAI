@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="TerminAI is a local AI coding companion for Mac, powered by Ollama. No cloud API key required.">
+  <title>TerminAI — Local AI for your Mac</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-mark">T</span> TerminAI</a>
+    <a class="nav-link" href="https://github.com/jaimehargrave-cpu/TerminAI">Project on GitHub ↗</a>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div>
+        <p class="eyebrow"><span class="pulse"></span> PRIVATE AI. RIGHT ON YOUR MAC.</p>
+        <h1>Your coding companion.<br><span>On your terms.</span></h1>
+        <p class="intro">Chat, explore ideas, and get coding help with an AI model running locally on your Mac. TerminAI connects to Ollama on your computer—no cloud AI API key required.</p>
+        <div class="actions"><a class="button primary" href="https://github.com/jaimehargrave-cpu/TerminAI">Explore TerminAI ↗</a><a class="button secondary" href="#getting-started">Get started</a></div>
+        <p class="fine-print">TerminAI is currently a Python terminal app; a standalone Mac app is not available yet.</p>
+      </div>
+      <div class="terminal-card" aria-label="Example TerminAI conversation">
+        <div class="terminal-top"><div class="window-dots"><i></i><i></i><i></i></div><span>terminai — local session</span><span class="local-label">● LOCAL</span></div>
+        <div class="terminal-body"><p class="prompt"><span>you</span> How do I reverse a list in Python?</p><p class="reply"><span>terminai</span> Use <code>my_list[::-1]</code> to create a reversed copy, or <code>my_list.reverse()</code> to reverse it in place.</p><p class="cursor-line">› <span class="cursor"></span></p></div>
+      </div>
+    </section>
+    <section class="facts"><div><strong>Local-first</strong><span>Runs through Ollama on your Mac</span></div><div><strong>No API key</strong><span>Use a model downloaded to your computer</span></div><div><strong>Open source</strong><span>Explore the project on GitHub</span></div></section>
+    <section class="how" id="getting-started">
+      <p class="eyebrow">GET STARTED</p><h2>Three steps. No API key.</h2>
+      <div class="steps">
+        <article><span class="step-number">01</span><h3>Install Ollama</h3><p>Download Ollama for Mac and open it so its local service is running.</p><a href="https://ollama.com/download/mac">Download Ollama ↗</a></article>
+        <article><span class="step-number">02</span><h3>Get a model</h3><p>In Terminal, download a model—for example, <code>ollama pull llama3.1</code>.</p></article>
+        <article><span class="step-number">03</span><h3>Run TerminAI</h3><p>Download the project and follow the setup instructions in its README.</p><a href="https://github.com/jaimehargrave-cpu/TerminAI">Open project ↗</a></article>
+      </div>
+      <p class="status-note">Once the model is downloaded, TerminAI sends chat prompts to Ollama running locally on your Mac.</p>
+    </section>
+  </main>
+  <footer><a class="brand" href="#top"><span class="brand-mark">T</span> TerminAI</a><span>Local AI, under your control.</span><a href="https://github.com/jaimehargrave-cpu/TerminAI">GitHub ↗</a></footer>
+</body>
+</html>
